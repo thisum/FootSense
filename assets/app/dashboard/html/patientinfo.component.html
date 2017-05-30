@@ -1,0 +1,47 @@
+<div class="container small-text">
+
+    <div class="row">
+        <div class="col-md-1">Patient Name:</div>
+        <div class="col-md-2"><input class="form-control-sm" type="text" id="patientName"
+                                     [(ngModel)]="criteria.patientName" name="patientName" #schema="ngModel"></div>
+        <div class="col-md-1 col-md-offset-1">From:</div>
+        <div class="col-md-2">
+            <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedFrom($event)"></my-date-picker>
+        </div>
+        <div class="col-md-1 col-md-offset-1">To:</div>
+        <div class="col-md-2">
+            <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedTo($event)"></my-date-picker>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary" (click)="onSearch()">Search</button>
+        </div>
+    </div>
+
+    <div class="row" style="border: 1px solid blue;">
+        <div class="col-md-6" style="padding-left: 0px; padding-right: 0px">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-2">Patient</th>
+                    <th class="col-md-2">Time</th>
+                    <th class="col-md-3">Left Leg</th>
+                    <th class="col-md-3">Right Leg</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let record of patientRecords">
+                    <td class="col-md-2">{{record.patientName}}</td>
+                    <td class="col-md-2">{{record.recordTime}}</td>
+                    <td class="col-md-3">{{record.leftLeg}}</td>
+                    <td class="col-md-3">{{record.rightLeg}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6" style="border-left: 1px solid blue; background:url('./images/foot.png')">
+            <div class="row" style="z-index: 1; background-color: transparent">
+            </div>
+        </div>
+    </div>
+
+</div>
