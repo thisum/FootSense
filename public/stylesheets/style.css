@@ -186,6 +186,155 @@ button:hover {
   border-bottom-color: transparent;
 }
 
-#foot_image{
-  background-image: url('images/foot.png');
+
+.thumb-f{
+  z-index: 1;
+  background-color: black;
+  height: 4em;
+  width: 4em;
+  position: relative;
+  border-radius: 2em;
+}
+
+.other-f{
+  z-index: 1;
+  background-color: black;
+  height: 2em;
+  width: 2em;
+  position: relative;
+  border-radius: 1em;
+}
+
+#left-fi1{
+  left: 50%;
+  top: 5%;
+}
+
+#left-fi2{
+  left: 25%;
+  top: 7%;
+}
+
+#left-fi3{
+  left: 10%;
+  top: 12%;
+}
+
+#left-fi4{
+  left: 30%;
+  top: 8%;
+}
+
+#left-fi5{
+  left: 17%;
+  top: 8%;
+}
+
+#left-fi6{
+  left: 10%;
+  top: 12%;
+}
+
+#left-fi7{
+  left: 31%;
+  top: 47%;
+}
+
+#left-fi8{
+  left: 19%;
+  top: 43%;
+}
+
+#right-fi1{
+  left: 32%;
+  top: 5%;
+}
+
+#right-fi2{
+  left: 60%;
+  top: 2%;
+}
+
+#right-fi3{
+  left: 75%;
+  top: 5%;
+}
+
+#right-fi4{
+  left: 64%;
+  top: 5%;
+}
+
+#right-fi5{
+  left: 90%;
+  top: 5%;
+}
+
+#right-fi6{
+  left: 32%;
+  top: 5%;
+}
+
+#right-fi7{
+  left: 32%;
+  top: 5%;
+}
+
+#right-fi8{
+  left: 32%;
+  top: 5%;
+}
+
+.foot-image-element{
+  border-left: 1px solid blue;
+  background:url('./../images/foot.png') no-repeat left;
+  background-size: 500px 500px;
+  height: 500px;
+}
+
+@media (min-height: 400px) {
+  .foot-image-element {
+    background-size: 320px 320px;
+    height: 320px;
+    width: 320px;
+  }
+
+  .thumb-f{
+    height: 2em;
+    width: 2em;
+    border-radius: 1em;
+  }
+}
+
+@media (min-height: 550px) {
+  .foot-image-element {
+    background-size: 470px 470px;
+    height: 470px;
+    width: 470px;
+  }
+
+  .thumb-f{
+    height: 3em;
+    width: 3em;
+    border-radius: 1.5em;
+  }
+}
+
+@media (min-height: 700px) {
+  .foot-image-element {
+    background-size: 620px 620px;
+    height: 620px;
+    width: 620px;
+  }
+
+
+}
+
+@media (min-height: 850px) {
+  .foot-image-element {
+    background-size: 770px 770px;
+    height: 770px;
+    width: 770px;
+
+  }
 }

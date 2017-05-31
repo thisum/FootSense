@@ -12,7 +12,7 @@ import {PatientRecord} from "../obj/PatientRecord";
     selector: 'fs-patient_records',
     templateUrl: 'html/patientinfo.component.html'
 })
-export class PatientInfoComponent{
+export class PatientInfoComponent implements OnInit{
 
     t: number = 1000*60*60*24 - 1;
     criteria = new PatientInfoSearchCriteria();
@@ -49,6 +49,11 @@ export class PatientInfoComponent{
         )
     }
 
+    ngOnInit(){
+
+        this.patientRecords.push(new PatientRecord("1234", "asdf", "wer", "sdgs", "werwe"));
+    }
+
     onDateChangedFrom(event: IMyDateModel) {
         this.criteria.fromDate = event.jsdate ? event.jsdate.getTime() : -1;
     }
@@ -58,5 +63,8 @@ export class PatientInfoComponent{
         this.criteria.toDate = event.jsdate ? (event.jsdate.getTime() + this.t): -1;
     }
 
+    onPatientRecordClicked(patientRecord: PatientRecord) {
+
+    }
 
 }

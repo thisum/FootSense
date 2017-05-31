@@ -10,9 +10,7 @@ var ConfHandler = require('./util/confighander');
 
 var appRoutes = require('./routes/app');
 var loginManager = require('./routes/login.manager');
-var requestManager = require('./routes/request.manager');
-var deviceManager = require('./routes/device.manager');
-var questionManager = require('./routes/question.manager');
+var patientManager = require('./routes/patient.manager');
 
 var app = express();
 
@@ -35,9 +33,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/auth', loginManager);
-app.use('/request', requestManager);
-app.use('/devices', deviceManager);
-app.use('/question', questionManager);
+app.use('/patient', patientManager);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

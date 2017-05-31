@@ -1,12 +1,45 @@
 /**
- * Created by thisum on 1/17/2017.
+ * Created by thisum_kankanamge on 1/6/17.
  */
 
-var patientRecord = require('../models/patient_record');
-var constants = require('../util/constants.json');
 var express = require('express');
+var tokenGenerator = require('jsonwebtoken');
+var request = require('request');
+var frRequest = require('../models/patient_record');
 var Constants = require('./constants');
+var patientRecord = require('../models/patient_record');
 var router = express.Router();
+
+
+router.use('/', function (req, res, next) {
+
+    tokenGenerator.verify(req.header('auth-token'), Constants.AUTH_PRIVATE_KEY, function (err, decoded) {
+        if (err) {
+            return res.status(401).json({status: Constants.RESPONSE_CODE_FAIL, message: "Authentication failed"});
+        }
+        else if (!decoded.user) {
+            return res.status(401).json({status: Constants.RESPONSE_CODE_FAIL, message: "No user found"});
+        }
+
+        req.body.user = decoded.user;
+        next();
+    });
+});
+
+router.get('/load', function (req, res, next) {
+
+    patientRecord.find({}, function (err, docs) {
+        if (err) {
+            return res.status(500).json({status: Constants.RESPONSE_CODE_FAIL, message: err});
+        }
+        else if (!docs) {
+            return res.status(500).json({status: Constants.RESPONSE_CODE_FAIL, message: "No Requests Found"});
+        }
+        else {
+            return res.status(200).json({status: Constants.RESPONSE_CODE_SUCCESS, result: docs});
+        }
+    });
+});
 
 
 router.post('/', function (req, res, next) {
@@ -71,5 +104,7 @@ function saveRequest(leftLeg, rightLeg, logTime, patient, callback) {
     });
 }
 
+
+module.exports = router;
 
 module.exports = router;

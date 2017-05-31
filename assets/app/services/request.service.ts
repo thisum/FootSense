@@ -13,7 +13,7 @@ import {PatientRecord} from "../obj/PatientRecord";
 @Injectable()
 export class PatientInfoService{
 
-    private baseUrl = BASE_URL;
+    private baseUrl = BASE_URL + '/patient';
     private options = {
         day : 'numeric',
         month : 'short',
@@ -32,6 +32,7 @@ export class PatientInfoService{
         let params = new URLSearchParams();
         params.set("patient_name", searchCriteria.patientName);
         params.set("from_date", String(searchCriteria.fromDate));
+        params.set("to_date", String(searchCriteria.toDate));
 
         return this._http.get( url , {headers : headers, body : {}, search: params}).toPromise()
             .then(response => {

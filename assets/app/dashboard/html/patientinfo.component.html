@@ -1,4 +1,4 @@
-<div class="container small-text">
+<div class="container-fluid small-text">
 
     <div class="row">
         <div class="col-md-1">Patient Name:</div>
@@ -17,29 +17,53 @@
         </div>
     </div>
 
-    <div class="row" style="border: 1px solid blue;">
+    <div class="row" style="border: 1px solid blue; min-height: 600px">
         <div class="col-md-6" style="padding-left: 0px; padding-right: 0px">
             <table class="table table-bordered">
                 <thead>
-                <tr>
-                    <th class="col-md-2">Patient</th>
-                    <th class="col-md-2">Time</th>
-                    <th class="col-md-3">Left Leg</th>
-                    <th class="col-md-3">Right Leg</th>
-                </tr>
+                    <tr>
+                        <th class="col-md-2">Patient</th>
+                        <th class="col-md-2">Time</th>
+                        <th class="col-md-3">Left Leg</th>
+                        <th class="col-md-3">Right Leg</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let record of patientRecords">
-                    <td class="col-md-2">{{record.patientName}}</td>
-                    <td class="col-md-2">{{record.recordTime}}</td>
-                    <td class="col-md-3">{{record.leftLeg}}</td>
-                    <td class="col-md-3">{{record.rightLeg}}</td>
-                </tr>
+                    <tr style="cursor: pointer" *ngFor="let record of patientRecords" (click)="onPatientRecordClicked(record)">
+                        <td class="col-md-2">{{record.patientName}}</td>
+                        <td class="col-md-2">{{record.recordTime}}</td>
+                        <td class="col-md-3">{{record.leftLeg}}</td>
+                        <td class="col-md-3">{{record.rightLeg}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6" style="border-left: 1px solid blue; background:url('./images/foot.png')">
-            <div class="row" style="z-index: 1; background-color: transparent">
+        <!--<div class="col-md-6 foot-image-element" style="background:url('./images/foot.png') no-repeat center">-->
+        <div class="col-md-6">
+            <div class="foot-image-element" >
+
+                <div style="width: 50%; height: 100%; float: left">
+                    <div id="left-fi1" class="thumb-f"></div>
+                    <div id="left-fi2" class="other-f"></div>
+                    <div id="left-fi3" class="other-f"></div>
+                    <div id="left-fi4" class="other-f"></div>
+                    <div id="left-fi5" class="other-f"></div>
+                    <div id="left-fi6" class="other-f"></div>
+                    <div id="left-fi7" class="other-f"></div>
+                    <div id="left-fi8" class="other-f"></div>
+                </div>
+
+                <div style="width: 50%; height: 100%; float: right">
+                    <div id="right-fi1" class="thumb-f"></div>
+                    <div id="right-fi2" class="other-f"></div>
+                    <div id="right-fi3" class="other-f"></div>
+                    <div id="right-fi4" class="other-f"></div>
+                    <div id="right-fi5" class="other-f"></div>
+                    <div id="right-fi6" class="other-f"></div>
+                    <div id="right-fi7" class="other-f"></div>
+                    <div id="right-fi8" class="other-f"></div>
+                </div>
+
             </div>
         </div>
     </div>
