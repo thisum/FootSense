@@ -11,6 +11,7 @@ var ConfHandler = require('./util/confighander');
 var appRoutes = require('./routes/app');
 var loginManager = require('./routes/login.manager');
 var patientManager = require('./routes/patient.manager');
+var patientReqManager = require('./routes/patient.request.manager');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(function (req, res, next) {
 
 app.use('/auth', loginManager);
 app.use('/patient', patientManager);
+app.use('/request', patientReqManager);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

@@ -9,6 +9,25 @@ export class PatientRecord{
         public leftLeg: string,
         public rightLeg: string,
         public recordTime: string,
-        public patientName: string
+        public patientName: string,
     ) {}
+
+    public getLeftLeg(){
+        return this.getIntArray(this.leftLeg);
+    }
+
+    public getRightLeg(){
+        return this.getIntArray(this.rightLeg);
+    }
+
+    private getIntArray(str: string): number[]{
+        let objs: number[] = [];
+        let s = str.split(",");
+        var num:number = 0
+
+        for( num=0;num < s.length; num++ ) {
+            objs.push(+s[num]);
+        }
+        return objs;
+    }
 }

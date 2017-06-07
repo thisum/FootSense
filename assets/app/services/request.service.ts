@@ -14,7 +14,7 @@ import {PatientRecord} from "../obj/PatientRecord";
 export class PatientInfoService{
 
     private baseUrl = BASE_URL + '/patient';
-    private options = {
+    private timeOptions = {
         day : 'numeric',
         month : 'short',
         year : 'numeric',
@@ -28,7 +28,7 @@ export class PatientInfoService{
     public searchPatientRecords( searchCriteria: PatientInfoSearchCriteria ): Promise<PatientRecord[]>{
 
         const headers = getHeader();
-        var url = this.baseUrl + '/load';
+        var url = this.baseUrl + '/search';
         let params = new URLSearchParams();
         params.set("patient_name", searchCriteria.patientName);
         params.set("from_date", String(searchCriteria.fromDate));
@@ -40,9 +40,13 @@ export class PatientInfoService{
                 if(status == SERVER_RESPONSE_STATUS.SUCCESS)
                 {
                     const data = response.json().result;
-                    let objs: any[] = [];
-                    
-                    return objs;
+                    let patientRecords: any[] = [];
+
+                    for(let obj of data){
+                        let reqTime = new Date(obj.recordTime).toLocaleString('en-GB', this.timeOptions);
+                        patientRecords.push( new PatientRecord(obj._id, obj.leftLeg, obj.rightLeg, reqTime, obj.patientName));
+                    }
+                    return patientRecords;
                 }
                 else if( status == SERVER_RESPONSE_STATUS.FAILED)
                 {
