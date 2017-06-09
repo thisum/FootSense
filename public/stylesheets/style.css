@@ -1,3 +1,16 @@
+body{
+   background-color: transparent;
+}
+#search-bar button{
+  margin-top: 0px;
+}
+#page-wrapper{
+  padding-top: 20px;
+}
+#result-table{
+  border: 1px solid #080808;
+  min-height: 100px
+}
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -7,14 +20,6 @@ h2 {
   font-size: 2em;
   margin-top: 0;
   padding-top: 0;
-}
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
 }
 nav a:visited, a:link {
   color: #607D8B;
@@ -195,6 +200,11 @@ button:hover {
   cursor: pointer;
 }
 
+.thumb-f, .other-f{
+  color: darkgray;
+  text-align: center;
+}
+
 .thumb-f{
   z-index: 1;
   background-color: black;
@@ -294,7 +304,7 @@ button:hover {
 }
 
 .foot-image-element{
-  border-left: 1px solid blue;
+  border-left: 1px solid #080808;
   background:url('./../images/foot.png') no-repeat left;
   background-size: 500px 500px;
   height: 500px;

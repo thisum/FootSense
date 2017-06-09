@@ -29,7 +29,7 @@ router.get('/search', function (req, res, next) {
 
     try{
         var criteria = createSearchCriteria(req.query);
-        patientRecord.find()
+        patientRecord.find(criteria)
             .exec(function (err, docs) {
                 if (err) {
                     return res.status(500).json({status: Constants.RESPONSE_CODE_FAIL, message: err});
@@ -51,13 +51,13 @@ router.get('/search', function (req, res, next) {
 function createSearchCriteria(param){
     var criteria = {};
     if( isNotNull(param.patient_name)){
-        criteria.patient_name = param.patient_name;
+        criteria.patientNameLC = { $regex: new RegExp("^" + param.patient_name.toLowerCase(), "i") }
     }
     if( isNotNull(param.from_date) && isNotNull(param.to_date)){
         var fromDate = parseInt(param.from_date);
         var toDate = parseInt(param.to_date);
         if( fromDate > 0 && toDate > 0 && toDate > fromDate ){
-            criteria.requestTime  = {$gte: fromDate, $lte: toDate};
+            criteria.recordTime  = {$gte: fromDate, $lte: toDate};
         }
     }
 

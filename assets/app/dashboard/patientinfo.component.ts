@@ -6,6 +6,7 @@ import {IMyOptions} from "../../../public/js/vendor/mydatepicker/dist/interfaces
 import {IMyDateModel} from "../../../public/js/vendor/mydatepicker/dist/interfaces/my-date-model.interface";
 import {PatientRecord} from "../obj/PatientRecord";
 import {AnalyseResult} from "../obj/AnalyseResult";
+import {Constants} from "../util/constants";
 
 
 @Component({
@@ -20,6 +21,8 @@ export class PatientInfoComponent{
     dialogVisibility: string = "hidden";
     leftLegColours: string[] = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
     rightLegColours: string[] = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
+    leftLegToolTips: string[] = ["","","","","","", "", ""];
+    rightLegToolTips: string[] = ["","","","","","", "", ""];
     t: number = 1000*60*60*24 - 1;
     criteria = new PatientInfoSearchCriteria();
     patientRecords: PatientRecord[] = [];
@@ -79,40 +82,16 @@ export class PatientInfoComponent{
         let rightLeg: number[] = patientRecord.getRightLeg();
         this.analyseResult = new AnalyseResult(leftLeg, rightLeg);
 
-        this.setFootPointColours(this.leftLegColours, leftLeg);
-        this.setFootPointColours(this.rightLegColours, rightLeg);
+        Constants.getColourNTooltip(this.leftLegColours, this.leftLegToolTips, leftLeg);
+        Constants.getColourNTooltip(this.rightLegColours, this.rightLegToolTips, rightLeg);
+
         this.diffColour = this.analyseResult.hasDifferences() ? "#8b2300" : "#98FB98";
         this.diffColourBorder = this.analyseResult.hasDifferences() ? "#8b0000" : "#006400";
     }
 
-    public setFootPointColours( legColours: string[], leg: number[] ){
-
-        let i:number = 0;
-        let colour:string = "#FFFFFF";
-        for(i=0; i<leg.length; i++)
-        {
-            switch(leg[i])
-            {
-                case 1: colour = "#FFFFFF";
-                        break;
-                case 2: colour = "#0000FF";
-                         break;
-                case 3: colour = "#D4002B";
-                    break;
-                case 4: colour = "#A80057";
-                    break;
-                case 5: colour = "#7E007E";
-                    break;
-                case 6: colour = "#5300AA";
-                    break;
-                case 7: colour = "#2A00D7";
-                    break;
-                case 8: colour = "#FF0000";
-                    break;
-                default: colour = "#FFFFFF";
-                    break;
-            }
-            legColours[i] = colour;
+    public hidePopup(event){
+        if(event.target.id !== "show_diff"){
+            this.dialogVisibility = "hidden";
         }
     }
 

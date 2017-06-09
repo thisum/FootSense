@@ -1,92 +1,98 @@
-<div class="container-fluid small-text">
+<div id="page-wrapper" (click)="hidePopup($event)">
 
-    <div class="row">
-        <div class="col-md-1">Patient Name:</div>
-        <div class="col-md-2"><input class="form-control-sm" type="text" id="patientName"
-                                     [(ngModel)]="criteria.patientName" name="patientName" #schema="ngModel"></div>
-        <div class="col-md-1 col-md-offset-1">From:</div>
-        <div class="col-md-2">
-            <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedFrom($event)"></my-date-picker>
-        </div>
-        <div class="col-md-1 col-md-offset-1">To:</div>
-        <div class="col-md-2">
-            <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedTo($event)"></my-date-picker>
-        </div>
-        <div class="col-md-1">
-            <button class="btn btn-primary" (click)="onSearch()">Search</button>
-        </div>
-    </div>
+    <div class="container-fluid small-text">
 
-    <div class="row" style="border: 1px solid blue; min-height: 600px">
-        <div class="col-md-6" style="padding-left: 0px; padding-right: 0px">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="col-md-2">Patient</th>
-                        <th class="col-md-2">Time</th>
-                        <th class="col-md-3">Left Leg</th>
-                        <th class="col-md-3">Right Leg</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="cursor: pointer" *ngFor="let record of patientRecords" (click)="onPatientRecordClicked(record)">
-                        <td class="col-md-2">{{record.patientName}}</td>
-                        <td class="col-md-2">{{record.recordTime}}</td>
-                        <td class="col-md-3">{{record.leftLeg}}</td>
-                        <td class="col-md-3">{{record.rightLeg}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row" id="search-bar">
+            <div class="col-lg-2">Patient Name:</div>
+            <div class="col-lg-2">
+                <input class="form-control-sm" type="text" id="patientName" [(ngModel)]="criteria.patientName" name="patientName" #schema="ngModel">
+            </div>
+            <div class="col-lg-1 ">From:</div>
+            <div class="col-lg-2">
+                <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedFrom($event)"></my-date-picker>
+            </div>
+            <div class="col-lg-1 ">To:</div>
+            <div class="col-lg-2">
+                <my-date-picker [options]="datePickerOptions" (dateChanged)="onDateChangedTo($event)"></my-date-picker>
+            </div>
+            <div class="col-lg-1 col-lg-offset-1">
+                <button class="btn btn-primary" (click)="onSearch()">Search</button>
+            </div>
+
         </div>
-        <!--<div class="col-md-6 foot-image-element" style="background:url('./images/foot.png') no-repeat center">-->
-        <div class="col-md-6">
-            <div class="foot-image-element" >
-                <div style="width: 50%; height: 100%; float: left">
-                    <div id="left-fi1" class="thumb-f" [style.background-color]="leftLegColours[0]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi2" class="other-f" [style.background-color]="leftLegColours[1]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi3" class="other-f" [style.background-color]="leftLegColours[2]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi4" class="other-f" [style.background-color]="leftLegColours[3]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi5" class="other-f" [style.background-color]="leftLegColours[4]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi6" class="other-f" [style.background-color]="leftLegColours[5]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi7" class="other-f" [style.background-color]="leftLegColours[6]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="left-fi8" class="other-f" [style.background-color]="leftLegColours[7]" data-toggle="tooltip" title="Hooray!"></div>
+
+        <div class="row" id="result-table">
+            <div class="col-md-6" style="padding: 0px">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Patient</th>
+                            <th class="col-md-2">Time</th>
+                            <th class="col-md-3">Left Leg</th>
+                            <th class="col-md-3">Right Leg</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="cursor: pointer" *ngFor="let record of patientRecords" (click)="onPatientRecordClicked(record)">
+                            <td class="col-md-2">{{record.patientName}}</td>
+                            <td class="col-md-2">{{record.recordTime}}</td>
+                            <td class="col-md-3">{{record.leftLeg}}</td>
+                            <td class="col-md-3">{{record.rightLeg}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="col-md-6 foot-image-element" style="background:url('./images/foot.png') no-repeat center">-->
+            <div class="col-md-6" style="padding: 0px;">
+                <div class="foot-image-element" >
+                    <div style="width: 50%; height: 100%; float: left">
+                        <div id="left-fi1" class="thumb-f" [style.background-color]="leftLegColours[0]" data-toggle="tooltip" [title]="leftLegToolTips[0]"><p>1</p></div>
+                        <div id="left-fi2" class="other-f" [style.background-color]="leftLegColours[1]" data-toggle="tooltip" [title]="leftLegToolTips[1]"><p>2</p></div>
+                        <div id="left-fi3" class="other-f" [style.background-color]="leftLegColours[2]" data-toggle="tooltip" [title]="leftLegToolTips[2]"><p>3</p></div>
+                        <div id="left-fi4" class="other-f" [style.background-color]="leftLegColours[3]" data-toggle="tooltip" [title]="leftLegToolTips[3]"><p>4</p></div>
+                        <div id="left-fi5" class="other-f" [style.background-color]="leftLegColours[4]" data-toggle="tooltip" [title]="leftLegToolTips[4]"><p>5</p></div>
+                        <div id="left-fi6" class="other-f" [style.background-color]="leftLegColours[5]" data-toggle="tooltip" [title]="leftLegToolTips[5]"><p>6</p></div>
+                        <div id="left-fi7" class="other-f" [style.background-color]="leftLegColours[6]" data-toggle="tooltip" [title]="leftLegToolTips[6]"><p>7</p></div>
+                        <div id="left-fi8" class="other-f" [style.background-color]="leftLegColours[7]" data-toggle="tooltip" [title]="leftLegToolTips[7]"><p>8</p></div>
+                    </div>
+
+                    <div style="width: 50%; height: 100%; float: right">
+                        <div id="right-fi1" class="thumb-f" [style.background-color]="rightLegColours[0]" data-toggle="tooltip" [title]="rightLegToolTips[0]"><p>1</p></div>
+                        <div id="right-fi2" class="other-f" [style.background-color]="rightLegColours[1]" data-toggle="tooltip" [title]="rightLegToolTips[1]"><p>2</p></div>
+                        <div id="right-fi3" class="other-f" [style.background-color]="rightLegColours[2]" data-toggle="tooltip" [title]="rightLegToolTips[2]"><p>3</p></div>
+                        <div id="right-fi4" class="other-f" [style.background-color]="rightLegColours[3]" data-toggle="tooltip" [title]="rightLegToolTips[3]"><p>4</p></div>
+                        <div id="right-fi5" class="other-f" [style.background-color]="rightLegColours[4]" data-toggle="tooltip" [title]="rightLegToolTips[4]"><p>5</p></div>
+                        <div id="right-fi6" class="other-f" [style.background-color]="rightLegColours[5]" data-toggle="tooltip" [title]="rightLegToolTips[5]"><p>6</p></div>
+                        <div id="right-fi7" class="other-f" [style.background-color]="rightLegColours[6]" data-toggle="tooltip" [title]="rightLegToolTips[6]"><p>7</p></div>
+                        <div id="right-fi8" class="other-f" [style.background-color]="rightLegColours[7]" data-toggle="tooltip" [title]="rightLegToolTips[7]"><p>8</p></div>
+                    </div>
+
+                    <div class="thumb-f" id="show_diff" [style.background-color]="diffColour" [style.border-color]="diffColourBorder" (click)="onShowDiffDialog()"></div>
+                    <div class="row animated slideInDown" id="foot_diff_dialog" [style.visibility]="dialogVisibility">
+                       <table class="table table-bordered">
+                           <thead>
+                           <tr>
+                               <th class="col-md-2">Foot Pos.</th>
+                               <th class="col-md-2">Left</th>
+                               <th class="col-md-2">Right</th>
+                               <th class="col-md-2">Difference</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr *ngFor="let records of analyseResult.getFingerDifferences()">
+                               <td class="col-md-2">{{records[0]}}</td>
+                               <td class="col-md-2">{{records[1]}}</td>
+                               <td class="col-md-3">{{records[2]}}</td>
+                               <td class="col-md-3">{{records[3]}}</td>
+                           </tr>
+                           </tbody>
+                       </table>
+                    </div>
+
                 </div>
-
-                <div style="width: 50%; height: 100%; float: right">
-                    <div id="right-fi1" class="thumb-f" [style.background-color]="rightLegColours[0]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi2" class="other-f" [style.background-color]="rightLegColours[1]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi3" class="other-f" [style.background-color]="rightLegColours[2]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi4" class="other-f" [style.background-color]="rightLegColours[3]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi5" class="other-f" [style.background-color]="rightLegColours[4]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi6" class="other-f" [style.background-color]="rightLegColours[5]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi7" class="other-f" [style.background-color]="rightLegColours[6]" data-toggle="tooltip" title="Hooray!"></div>
-                    <div id="right-fi8" class="other-f" [style.background-color]="rightLegColours[7]" data-toggle="tooltip" title="Hooray!"></div>
-                </div>
-
-                <div class="thumb-f" id="show_diff" [style.background-color]="diffColour" [style.border-color]="diffColourBorder" (click)="onShowDiffDialog()"></div>
-                <div class="row animated slideInDown" id="foot_diff_dialog" [style.visibility]="dialogVisibility">
-                   <table class="table table-bordered">
-                       <thead>
-                       <tr>
-                           <th class="col-md-2">Foot Pos.</th>
-                           <th class="col-md-2">Left</th>
-                           <th class="col-md-2">Right</th>
-                           <th class="col-md-2">Difference</th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       <tr *ngFor="let records of analyseResult.getFingerDifferences()">
-                           <td class="col-md-2">{{records[0]}}</td>
-                           <td class="col-md-2">{{records[1]}}</td>
-                           <td class="col-md-3">{{records[2]}}</td>
-                           <td class="col-md-3">{{records[3]}}</td>
-                       </tr>
-                       </tbody>
-                   </table>
-                </div>
-
             </div>
         </div>
+
     </div>
 
 </div>

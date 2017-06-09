@@ -37,11 +37,11 @@ router.post('/', function (req, res, next) {
 function saveRequest(leftLeg, rightLeg, email, patient, callback) {
 
     var newRecord = new patientRecord({
-
         leftLeg: leftLeg,
         rightLeg: rightLeg,
         recordTime: Date.now(),
         patientName: patient,
+        patientNameLC: patient.toLowerCase(),
         patientEmail: email
     });
 

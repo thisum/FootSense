@@ -1,14 +1,23 @@
-<nav class="navbar navbar-inverse navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <h2 class="text-left navbar-brand">FootSense</h2>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" *ngIf="hasLogin()">
-            <ul class="nav navbar-nav navbar-right">
-                <li><h4><p class="text-info">{{email}}</p></h4></li>
-                <li><button class="btn btn-danger" (click)="onLogout()">Logout</button></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <span class="navbar-brand">FootSense</span>
     </div>
+
+    <ul class="nav navbar-right top-nav" *ngIf="hasLogin()">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="padding-top: 15px;padding-bottom: 15px; :hover {background-color: transparent}">
+                <i class="fa fa-user"></i> {{email}} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a><i class="fa fa-fw fa-user"></i> Profile</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a (click)="onLogout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </nav>
 

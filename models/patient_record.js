@@ -9,6 +9,7 @@ var patientRecordSchema = mongoose.Schema({
     recordId        : {type:mongoose.Schema.Types.ObjectId, ref: 'patient'},
     recordTime      : Date,
     patientName     : String,
+    patientNameLC   : String,
     patientEmail    : String,
     leftLeg         : String,
     rightLeg        : String

@@ -9,7 +9,7 @@ export class PatientRecord{
         public leftLeg: string,
         public rightLeg: string,
         public recordTime: string,
-        public patientName: string,
+        public patientName: string
     ) {}
 
     public getLeftLeg(){
