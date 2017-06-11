@@ -192,12 +192,21 @@ button:hover {
 }
 
 #show_diff{
-  left: 90%;
+  right: 1%;
   margin-top: 2%;
   position: absolute;
   border: 1px #4323ff solid;
   background-color: #0aa771;
   cursor: pointer;
+}
+
+#diff_person{
+  position: absolute;
+  right: 10%;
+  margin-top: 4%;
+  padding: 1px;
+  text-align: end;
+  width: 100px;
 }
 
 .thumb-f, .other-f{
@@ -312,7 +321,7 @@ button:hover {
 
 #foot_diff_dialog{
   position: absolute;
-  left: 55%;
+  right: 0%;
   margin-right: 1%;
   margin-top: 10%;
   background: white;

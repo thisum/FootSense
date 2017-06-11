@@ -16,6 +16,7 @@ import {Constants} from "../util/constants";
 })
 export class PatientInfoComponent{
 
+    patientName: string = "";
     diffColour: string = "#98FB98";
     diffColourBorder: string = "#006400";
     dialogVisibility: string = "hidden";
@@ -53,9 +54,11 @@ export class PatientInfoComponent{
         this.patientInfoService.searchPatientRecords(this.criteria).then(
             records =>{
                 this.patientRecords = records;
+                this.patientName = "";
             },
             error => {
                 console.error(error);
+                this.patientName = "";
             }
         )
     }
@@ -85,6 +88,7 @@ export class PatientInfoComponent{
         Constants.getColourNTooltip(this.leftLegColours, this.leftLegToolTips, leftLeg);
         Constants.getColourNTooltip(this.rightLegColours, this.rightLegToolTips, rightLeg);
 
+        this.patientName = patientRecord.patientName;
         this.diffColour = this.analyseResult.hasDifferences() ? "#8b2300" : "#98FB98";
         this.diffColourBorder = this.analyseResult.hasDifferences() ? "#8b0000" : "#006400";
     }
