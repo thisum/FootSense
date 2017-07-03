@@ -42,7 +42,7 @@ router.post('/signin', function(req, res, next){
             return res.status(404).json({status: Constants.RESPONSE_CODE_FAIL, message: "Invalid password"});
         }
 
-        var token = tokenGenerator.sign({user: user}, Constants.AUTH_PRIVATE_KEY, {expiresIn: 7200});
+        var token = tokenGenerator.sign({user: user}, Constants.AUTH_PRIVATE_KEY, {expiresIn: '360d'});
         res.status(200).json({status: Constants.RESPONSE_CODE_SUCCESS, token: token, email: user.email, admin: user.admin});
     });
 
