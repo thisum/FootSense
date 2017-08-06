@@ -19,7 +19,7 @@ export class AnalyseResult{
 
         let i:number = 0;
         for(i=0; i<this.difFingers.length; i++ ){
-            if(this.rightLeg[i] != this.leftLeg[i] ){
+            if( Math.abs(this.rightLeg[i] - this.leftLeg[i]) >= 2 ){
                 var diff: string[] = [String(i+1), String(this.leftLeg[i]), String(this.rightLeg[i]), String(this.leftLeg[i] - this.rightLeg[i])];
                 this.fingerDifferences.push(diff);
                 this.difFingers[i] = 1;

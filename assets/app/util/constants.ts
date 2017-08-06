@@ -20,50 +20,52 @@ export class Constants{
 
         let i:number = 0;
         let colour:string = "#FFFFFF";
-        let tooltip:string = "0 <= T < 15";
+        let tooltip:number = 0;
         for(i=0; i<leg.length; i++)
         {
-            switch(leg[i])
+            let temperature:number = leg[i] / 100;
+            if( temperature <= 15 )
             {
-                case 1:
-                    colour = "#FFFFFF";
-                    tooltip = "0 ≤ T < 15";
-                    break;
-                case 2:
-                    colour = "#0000FF";
-                    tooltip = "15 ≤ T ≤ 20";
-                    break;
-                case 3:
-                    colour = "#D4002B";
-                    tooltip = "20 < T ≤ 24";
-                    break;
-                case 4:
-                    colour = "#A80057";
-                    tooltip = "24 < T ≤ 25";
-                    break;
-                case 5:
-                    colour = "#7E007E";
-                    tooltip = "25 < T ≤ 26";
-                    break;
-                case 6:
-                    colour = "#5300AA";
-                    tooltip = "26 < T ≤ 27";
-                    break;
-                case 7:
-                    colour = "#2A00D7";
-                    tooltip = "27 < T ≤ 28";
-                    break;
-                case 8:
-                    colour = "#FF0000";
-                    tooltip = "28 < T ≤ 29";
-                    break;
-                default:
-                    colour = "#FFFFFF";
-                    tooltip = "T > 29";
-                    break;
+                colour = "#FFFFFF";
+                tooltip = temperature;
+            }
+            else if( 15 < temperature && temperature <= 20 )
+            {
+                colour = "#00EAFF";
+                tooltip = temperature;
+            }
+            else if( 20 < temperature && temperature <= 24 )
+            {
+                colour = "#007EFF";
+                tooltip = temperature;
+            }
+            else if( 24 < temperature && temperature <= 25 )
+            {
+                colour = "#002AFF";
+                tooltip = temperature;
+            }
+            else if( 25 < temperature && temperature <= 26 )
+            {
+                colour = "#4800FF";
+                tooltip = temperature;
+            }
+            else if( 26 < temperature && temperature <= 27 )
+            {
+                colour = "#BA00FF";
+                tooltip = temperature;
+            }
+            else if( 27 < temperature && temperature <= 29 )
+            {
+                colour = "#FF00B4";
+                tooltip = temperature;
+            }
+            else
+            {
+                colour = "#FF0000";
+                tooltip = temperature;
             }
             legColours[i] = colour;
-            legTooltips[i] = tooltip;
+            legTooltips[i] = String(tooltip);
         }
     }
 }
