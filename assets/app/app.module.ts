@@ -2,6 +2,7 @@ import {NgModule, NgModuleMetadataType} from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { MyDatePickerModule } from 'mydatepicker';
+import {ChartModule} from "angular2-highcharts";
 
 import { AppComponent }   from './app.component';
 import {routing, appRoutingProviders}        from './app.routing';
@@ -21,7 +22,8 @@ import {PatientInfoService} from "./services/request.service";
         FormsModule,
         routing,
         HttpModule,
-        MyDatePickerModule
+        MyDatePickerModule,
+        ChartModule.forRoot(require('highcharts'))
     ],
     declarations: [
         AppComponent,

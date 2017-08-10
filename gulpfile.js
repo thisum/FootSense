@@ -74,6 +74,15 @@ gulp.task('vendor', function() {
     gulp.src('node_modules/angular2-busy/**')
         .pipe(gulp.dest(vendor + '/angular2-busy/'));
 
+    //angular2-highcharts
+    gulp.src('node_modules/angular2-highcharts/**')
+        .pipe(gulp.dest(vendor + '/angular2-highcharts/'));
+
+
+    //highcharts
+    gulp.src('node_modules/highcharts/**')
+        .pipe(gulp.dest(vendor + '/highcharts/'));
+
     //datepicker
     return gulp.src('node_modules/mydatepicker/**')
         .pipe(gulp.dest(vendor + '/mydatepicker/'));

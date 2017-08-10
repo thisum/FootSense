@@ -210,7 +210,6 @@ button:hover {
 }
 
 .thumb-f, .other-f{
-  color: darkgray;
   text-align: center;
 }
 
@@ -230,6 +229,32 @@ button:hover {
   width: 2em;
   position: relative;
   border-radius: 1em;
+}
+
+#patient-history-chart{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 5px;
+  z-index: 3;
+}
+
+#patient-history-chart span{
+  font-size: 30px;
+  cursor: pointer;
+  color: #1c2d3f;
+}
+
+#patient-history-dialog{
+  position: absolute;
+  visibility: hidden;
+  bottom: 5%;
+  left: 8%;
+  z-index: 10;
+}
+
+#patient-history-dialog div{
+  border: 1px black solid;
 }
 
 #left-fi1{

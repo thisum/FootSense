@@ -36,8 +36,8 @@
                         <tr style="cursor: pointer" *ngFor="let record of patientRecords" (click)="onPatientRecordClicked(record)">
                             <td class="col-md-2">{{record.patientName}}</td>
                             <td class="col-md-2">{{record.recordTime}}</td>
-                            <td class="col-md-3">{{record.leftLeg}}</td>
-                            <td class="col-md-3">{{record.rightLeg}}</td>
+                            <td class="col-md-3">{{record.leftLegValues}}</td>
+                            <td class="col-md-3">{{record.rightLegValues}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,25 +46,25 @@
             <div class="col-md-6" style="padding: 0px;">
                 <div class="foot-image-element" >
                     <div style="width: 50%; height: 100%; float: left">
-                        <div id="left-fi1" class="thumb-f" [style.background-color]="leftLegColours[0]" data-toggle="tooltip" [title]="leftLegToolTips[0]"><p>1</p></div>
-                        <div id="left-fi2" class="other-f" [style.background-color]="leftLegColours[1]" data-toggle="tooltip" [title]="leftLegToolTips[1]"><p>2</p></div>
-                        <div id="left-fi3" class="other-f" [style.background-color]="leftLegColours[2]" data-toggle="tooltip" [title]="leftLegToolTips[2]"><p>3</p></div>
-                        <div id="left-fi4" class="other-f" [style.background-color]="leftLegColours[3]" data-toggle="tooltip" [title]="leftLegToolTips[3]"><p>4</p></div>
-                        <div id="left-fi5" class="other-f" [style.background-color]="leftLegColours[4]" data-toggle="tooltip" [title]="leftLegToolTips[4]"><p>5</p></div>
-                        <div id="left-fi6" class="other-f" [style.background-color]="leftLegColours[5]" data-toggle="tooltip" [title]="leftLegToolTips[5]"><p>6</p></div>
-                        <div id="left-fi7" class="other-f" [style.background-color]="leftLegColours[6]" data-toggle="tooltip" [title]="leftLegToolTips[6]"><p>7</p></div>
-                        <div id="left-fi8" class="other-f" [style.background-color]="leftLegColours[7]" data-toggle="tooltip" [title]="leftLegToolTips[7]"><p>8</p></div>
+                        <div id="left-fi1" class="thumb-f" [style.background-color]="leftLegColours[0]" data-toggle="tooltip" [title]="1"><p>{{leftLegTempValues[0]}}</p></div>
+                        <div id="left-fi2" class="other-f" [style.background-color]="leftLegColours[1]" data-toggle="tooltip" [title]="2"><p>{{leftLegTempValues[1]}}</p></div>
+                        <div id="left-fi3" class="other-f" [style.background-color]="leftLegColours[2]" data-toggle="tooltip" [title]="3"><p>{{leftLegTempValues[2]}}</p></div>
+                        <div id="left-fi4" class="other-f" [style.background-color]="leftLegColours[3]" data-toggle="tooltip" [title]="4"><p>{{leftLegTempValues[3]}}</p></div>
+                        <div id="left-fi5" class="other-f" [style.background-color]="leftLegColours[4]" data-toggle="tooltip" [title]="5"><p>{{leftLegTempValues[4]}}</p></div>
+                        <div id="left-fi6" class="other-f" [style.background-color]="leftLegColours[5]" data-toggle="tooltip" [title]="6"><p>{{leftLegTempValues[5]}}</p></div>
+                        <div id="left-fi7" class="other-f" [style.background-color]="leftLegColours[6]" data-toggle="tooltip" [title]="7"><p>{{leftLegTempValues[6]}}</p></div>
+                        <div id="left-fi8" class="other-f" [style.background-color]="leftLegColours[7]" data-toggle="tooltip" [title]="8"><p>{{leftLegTempValues[7]}}</p></div>
                     </div>
 
                     <div style="width: 50%; height: 100%; float: right">
-                        <div id="right-fi1" class="thumb-f" [style.background-color]="rightLegColours[0]" data-toggle="tooltip" [title]="rightLegToolTips[0]"><p>1</p></div>
-                        <div id="right-fi2" class="other-f" [style.background-color]="rightLegColours[1]" data-toggle="tooltip" [title]="rightLegToolTips[1]"><p>2</p></div>
-                        <div id="right-fi3" class="other-f" [style.background-color]="rightLegColours[2]" data-toggle="tooltip" [title]="rightLegToolTips[2]"><p>3</p></div>
-                        <div id="right-fi4" class="other-f" [style.background-color]="rightLegColours[3]" data-toggle="tooltip" [title]="rightLegToolTips[3]"><p>4</p></div>
-                        <div id="right-fi5" class="other-f" [style.background-color]="rightLegColours[4]" data-toggle="tooltip" [title]="rightLegToolTips[4]"><p>5</p></div>
-                        <div id="right-fi6" class="other-f" [style.background-color]="rightLegColours[5]" data-toggle="tooltip" [title]="rightLegToolTips[5]"><p>6</p></div>
-                        <div id="right-fi7" class="other-f" [style.background-color]="rightLegColours[6]" data-toggle="tooltip" [title]="rightLegToolTips[6]"><p>7</p></div>
-                        <div id="right-fi8" class="other-f" [style.background-color]="rightLegColours[7]" data-toggle="tooltip" [title]="rightLegToolTips[7]"><p>8</p></div>
+                        <div id="right-fi1" class="thumb-f" [style.background-color]="rightLegColours[0]" data-toggle="tooltip" [title]="1"><p>{{rightLegTempValues[0]}}</p></div>
+                        <div id="right-fi2" class="other-f" [style.background-color]="rightLegColours[1]" data-toggle="tooltip" [title]="2"><p>{{rightLegTempValues[1]}}</p></div>
+                        <div id="right-fi3" class="other-f" [style.background-color]="rightLegColours[2]" data-toggle="tooltip" [title]="3"><p>{{rightLegTempValues[2]}}</p></div>
+                        <div id="right-fi4" class="other-f" [style.background-color]="rightLegColours[3]" data-toggle="tooltip" [title]="4"><p>{{rightLegTempValues[3]}}</p></div>
+                        <div id="right-fi5" class="other-f" [style.background-color]="rightLegColours[4]" data-toggle="tooltip" [title]="5"><p>{{rightLegTempValues[4]}}</p></div>
+                        <div id="right-fi6" class="other-f" [style.background-color]="rightLegColours[5]" data-toggle="tooltip" [title]="6"><p>{{rightLegTempValues[5]}}</p></div>
+                        <div id="right-fi7" class="other-f" [style.background-color]="rightLegColours[6]" data-toggle="tooltip" [title]="7"><p>{{rightLegTempValues[6]}}</p></div>
+                        <div id="right-fi8" class="other-f" [style.background-color]="rightLegColours[7]" data-toggle="tooltip" [title]="8"><p>{{rightLegTempValues[7]}}</p></div>
                     </div>
 
                     <div id="diff_person">{{patientName}}</div>
@@ -91,6 +91,19 @@
                     </div>
 
                 </div>
+
+                <div id="patient-history-chart" (click)="showHistoryChart()">
+                    <span class="fa fa-bar-chart"></span>
+                </div>
+
+                <!--<div class="row animated slideInDown" id="patient-history-dialog" [style.visibility]="chartVisibility">-->
+
+                    <!--<div class="row">-->
+                    <!--<chart [options]="options"></chart>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
             </div>
         </div>
 

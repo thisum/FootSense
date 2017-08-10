@@ -20,14 +20,61 @@ export class PatientInfoComponent{
     diffColour: string = "#98FB98";
     diffColourBorder: string = "#006400";
     dialogVisibility: string = "hidden";
+    chartVisibility: string = "hidden";
     leftLegColours: string[] = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
     rightLegColours: string[] = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
-    leftLegToolTips: string[] = ["","","","","","", "", ""];
-    rightLegToolTips: string[] = ["","","","","","", "", ""];
+    leftLegTempValues: string[] = ["","","","","","", "", ""];
+    rightLegTempValues: string[] = ["","","","","","", "", ""];
     t: number = 1000*60*60*24 - 1;
     criteria = new PatientInfoSearchCriteria();
     patientRecords: PatientRecord[] = [];
     analyseResult: AnalyseResult = new AnalyseResult([0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]);
+
+    options = {
+        title : { text : 'Last 5 records of the patient' },
+        yAxis: {
+            title: {
+                text: 'Temperature'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                pointStart: 2010
+            }
+        },
+
+        series: [{
+            name: '1',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+            name: '2',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: '3',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: '4',
+            data: [7988, 7988, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: '5',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        },{
+            name: '6',
+            data: [7988, 7988, 7988, 0, 88, 22452, 34400, 34227]
+        },{
+            name: '7',
+            data: [7988, 7988, 7988, 89, 15112, 12, 34400, 34227]
+        },{
+            name: '8',
+            data: [100, 7988, 7988, 444, 15112, 22452, 34400, 34227]
+        }]
+    };
 
     private timeOptions = {
         day : 'numeric',
@@ -80,13 +127,22 @@ export class PatientInfoComponent{
         }
     }
 
+    public showHistoryChart(){
+        if(this.chartVisibility == "visible"){
+            this.chartVisibility = "hidden";
+        }
+        else{
+            this.chartVisibility = "visible";
+        }
+    }
+
     public onPatientRecordClicked(patientRecord: PatientRecord) {
         let leftLeg: number[] = patientRecord.getLeftLeg();
         let rightLeg: number[] = patientRecord.getRightLeg();
         this.analyseResult = new AnalyseResult(leftLeg, rightLeg);
 
-        Constants.getColourNTooltip(this.leftLegColours, this.leftLegToolTips, leftLeg);
-        Constants.getColourNTooltip(this.rightLegColours, this.rightLegToolTips, rightLeg);
+        Constants.getColourNTooltip(this.leftLegColours, this.leftLegTempValues, leftLeg);
+        Constants.getColourNTooltip(this.rightLegColours, this.rightLegTempValues, rightLeg);
 
         this.patientName = patientRecord.patientName;
         this.diffColour = this.analyseResult.hasDifferences() ? "#8b2300" : "#98FB98";

@@ -6,6 +6,8 @@ var map = {
     'bootstrap': 'js/vendor/bootstrap',
     'moment': 'js/vendor/moment/moment.js',
     'mydatepicker': 'js/vendor/mydatepicker/bundles/mydatepicker.umd.js',
+    'angular2-highcharts': 'js/vendor/angular2-highcharts',
+    'highcharts': 'js/vendor/highcharts',
     'angular2-busy': 'js/vendor/angular2-busy/build/src/index.js'
 };
 
@@ -13,6 +15,8 @@ var packages = {
     'app': { main: 'boot.js', defaultExtension: 'js' },
     'rxjs': { defaultExtension: 'js' },
     'ng2-bootstrap': { defaultExtension: 'js' },
+    'highcharts': { main: 'highcharts.js', defaultExtension: 'js' },
+    'angular2-highcharts': { main: 'index.js', defaultExtension: 'js' },
     'bootstrap': { defaultExtension: 'js' },
     'angular2-busy': { defaultExtension: 'js' }
 };

@@ -23,7 +23,7 @@ export class Constants{
         let tooltip:number = 0;
         for(i=0; i<leg.length; i++)
         {
-            let temperature:number = leg[i] / 100;
+            let temperature:number = leg[i];
             if( temperature <= 15 )
             {
                 colour = "#FFFFFF";
