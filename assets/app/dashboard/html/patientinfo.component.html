@@ -96,13 +96,17 @@
                     <span class="fa fa-bar-chart"></span>
                 </div>
 
-                <!--<div class="row animated slideInDown" id="patient-history-dialog" [style.visibility]="chartVisibility">-->
+                <div class="row animated slideInDown" id="patient-history-dialog" [style.visibility]="chartVisibility">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <chart [options]="chartoptionsLeft"></chart>
+                        </div>
+                        <div class="col-md-6">
+                            <chart [options]="chartoptionsRight"></chart>
+                        </div>
+                    </div>
 
-                    <!--<div class="row">-->
-                    <!--<chart [options]="options"></chart>-->
-                    <!--</div>-->
-
-                <!--</div>-->
+                </div>
 
             </div>
         </div>

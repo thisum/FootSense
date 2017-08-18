@@ -249,13 +249,17 @@ button:hover {
   position: absolute;
   visibility: hidden;
   bottom: 5%;
-  left: 8%;
+  left: -89%;
   z-index: 10;
 }
 
-#patient-history-dialog div{
+#patient-history-dialog div > div{
   border: 1px black solid;
 }
+
+/*#patient-history-dialog div:nth-child(1){*/
+  /*border: 1px black solid;*/
+/*}*/
 
 #left-fi1{
   left: 50%;

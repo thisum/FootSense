@@ -30,8 +30,15 @@ export class PatientInfoComponent{
     patientRecords: PatientRecord[] = [];
     analyseResult: AnalyseResult = new AnalyseResult([0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]);
 
-    options = {
-        title : { text : 'Last 5 records of the patient' },
+    chartoptionsLeft = {
+
+        chart: {
+            type: 'line'
+        },
+        title : { text : 'Left leg' },
+        xAxis: {
+            tickInterval: 1
+        },
         yAxis: {
             title: {
                 text: 'Temperature'
@@ -44,35 +51,94 @@ export class PatientInfoComponent{
         },
 
         plotOptions: {
-            series: {
-                pointStart: 2010
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
             }
         },
 
         series: [{
             name: '1',
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+            data: [25.1, 25, 25.2, 25, 25.1]
         }, {
             name: '2',
-            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+            data: [25, 24.9, 24.9, 25.1, 25.1]
         }, {
             name: '3',
-            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+            data: [25.1, 25, 25.1, 25.2, 25.2]
         }, {
             name: '4',
-            data: [7988, 7988, 7988, 12169, 15112, 22452, 34400, 34227]
+            data: [25.1, 25.2, 25.2, 25, 25]
         }, {
             name: '5',
-            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+            data: [25.2, 25.1, 25.1, 25, 25.2]
         },{
             name: '6',
-            data: [7988, 7988, 7988, 0, 88, 22452, 34400, 34227]
+            data: [25, 25.2, 25.2, 25.1, 25.1]
         },{
             name: '7',
-            data: [7988, 7988, 7988, 89, 15112, 12, 34400, 34227]
+            data: [25, 25.2, 25.2, 25.1, 25.1]
         },{
             name: '8',
-            data: [100, 7988, 7988, 444, 15112, 22452, 34400, 34227]
+            data: [25.2, 25.2, 25.1, 25.1, 25]
+        }]
+    };
+
+    chartoptionsRight = {
+
+        chart: {
+            type: 'line'
+        },
+        title : { text : 'Right leg' },
+        xAxis: {
+            tickInterval: 1
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+
+        series: [{
+            name: '1',
+            data: [25.1, 25, 25.2, 25, 25.1]
+        }, {
+            name: '2',
+            data: [25, 24.9, 24.9, 25.1, 25.1]
+        }, {
+            name: '3',
+            data: [25.1, 25, 25.1, 25.2, 25.2]
+        }, {
+            name: '4',
+            data: [25.1, 25.2, 25.2, 25, 25]
+        }, {
+            name: '5',
+            data: [25.2, 25.1, 25.1, 25, 25.2]
+        },{
+            name: '6',
+            data: [25, 25.2, 25.2, 25.1, 25.1]
+        },{
+            name: '7',
+            data: [25, 25.2, 25.2, 25.1, 25.1]
+        },{
+            name: '8',
+            data: [25.2, 25.2, 25.1, 25.1, 25]
         }]
     };
 
