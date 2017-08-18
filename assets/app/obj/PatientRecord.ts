@@ -17,6 +17,8 @@ export class PatientRecord{
 
         this.setTemperatureArray(leftLeg, true);
         this.setTemperatureArray(rightLeg, false);
+        this.leftLeg = this.reArrangeArray(this.leftLeg);
+        this.rightLeg = this.reArrangeArray(this.rightLeg);
     }
 
     public setTemperatureArray(array: string, leftLeg: boolean){
@@ -45,5 +47,14 @@ export class PatientRecord{
             objs.push(+s[num]/100);
         }
         return objs;
+    }
+
+    private reArrangeArray(strAry: string): string{
+        let ary = strAry.split(",");
+        let result:string = "";
+        for(let ele of ary ){
+            result.concat( " "  + ele + ",");
+        }
+        return result;
     }
 }
